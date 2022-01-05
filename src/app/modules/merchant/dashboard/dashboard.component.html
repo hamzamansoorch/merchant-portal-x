@@ -1,0 +1,730 @@
+<div
+    class="absolute inset-0 flex flex-col min-w-0 overflow-y-auto"
+    cdkScrollable>
+    <div class="flex flex-col flex-auto w-full">
+        <div class="flex flex-wrap w-full max-w-screen-xl mx-auto p-6 md:p-8">
+            <!-- Title and action buttons -->
+            <div class="flex items-center justify-between w-full">
+                <div>
+                    <h2 class="text-3xl font-semibold tracking-tight leading-8">{{ storeName }} Sales Overview</h2>
+                    <div class="font-medium tracking-tight text-secondary">SYMPly manage your financial status</div>
+                </div>
+                <div class="flex items-center ml-6">
+                    <!-- <button
+                        class="hidden sm:inline-flex"
+                        mat-stroked-button>
+                        <mat-icon
+                            class="icon-size-5"
+                            [svgIcon]="'heroicons_solid:document-report'"></mat-icon>
+                        <span class="ml-2">Reports</span>
+                    </button> -->
+                    <!-- <button
+                        class="hidden sm:inline-flex ml-3"
+                        mat-stroked-button>
+                        <mat-icon
+                            class="icon-size-5"
+                            [svgIcon]="'heroicons_solid:cog'"></mat-icon>
+                        <span class="ml-2">Settings</span>
+                    </button> -->
+                    <!-- <button
+                        class="hidden sm:inline-flex ml-3"
+                        mat-flat-button
+                        [color]="'primary'">
+                        <mat-icon
+                            class="icon-size-5"
+                            [svgIcon]="'heroicons_solid:save'"></mat-icon>
+                        <span class="ml-2">Export</span>
+                    </button> -->
+
+                    <!-- Actions menu (visible on xs) -->
+                    <!-- <div class="sm:hidden">
+                        <button
+                            [matMenuTriggerFor]="actionsMenu"
+                            mat-icon-button>
+                            <mat-icon [svgIcon]="'heroicons_outline:dots-vertical'"></mat-icon>
+                        </button>
+                        <mat-menu #actionsMenu="matMenu">
+                            <button mat-menu-item>Export</button>
+                            <button mat-menu-item>Reports</button>
+                            <button mat-menu-item>Settings</button>
+                        </mat-menu>
+                    </div> -->
+                </div>
+            </div>
+            <div class="grid grid-cols-1 xl:grid-cols-2 gap-8 w-full mt-8">
+                <div class="flex flex-col flex-auto xl:col-span-2 w-full max-w-screen-xl mx-auto">
+                    <div class="sm:px-6">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 w-full min-w-0">
+                            <!-- Today Sales -->
+                            <div class="flex flex-col flex-auto p-6 bg-card shadow rounded-2xl overflow-hidden">
+                                <div class="flex items-start justify-between">
+                                    <div class="text-lg font-medium tracking-tight leading-6 truncate">Today Sales</div>
+                                </div>
+                                <div class="flex flex-col items-center mt-2">
+                                    <div class="text-7xl sm:text-8xl font-bold tracking-tight leading-none text-blue-500">{{sumDailyCompleted}}</div>
+                                    <div class="text-lg font-medium text-blue-600 dark:text-blue-500">Completed</div>
+                                    <div class="flex items-baseline justify-center w-full mt-5 text-secondary">
+                                        <div class="text-md font-medium truncate">Pending:</div>
+                                        <div class="ml-1.5 text-lg font-semibold">{{sumDailyPending}}</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Weekly Sales -->
+                            <div class="flex flex-col flex-auto p-6 bg-card shadow rounded-2xl overflow-hidden">
+                                <div class="flex items-start justify-between">
+                                    <div class="text-lg font-medium tracking-tight leading-6 truncate">Weekly Sales</div>
+                                </div>
+                                <div class="flex flex-col items-center mt-2">
+                                    <div class="text-7xl sm:text-8xl font-bold tracking-tight leading-none text-red-500">{{sumWeeklyCompleted}}</div>
+                                    <div class="text-lg font-medium text-red-600 dark:text-red-500">Completed</div>
+                                    <div class="flex items-baseline justify-center w-full mt-5 text-secondary">
+                                        <div class="text-md font-medium truncate">Pending:</div>
+                                        <div class="ml-1.5 text-lg font-semibold">{{sumWeeklyPending}}</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Monthly Sales -->
+                            <div class="flex flex-col flex-auto p-6 bg-card shadow rounded-2xl overflow-hidden">
+                                <div class="flex items-start justify-between">
+                                    <div class="text-lg font-medium tracking-tight leading-6 truncate">Monthly Sales</div>
+                                </div>
+                                <div class="flex flex-col items-center mt-2">
+                                    <div class="text-7xl sm:text-8xl font-bold tracking-tight leading-none text-amber-500">{{sumMonthlyCompleted}}</div>
+                                    <div class="text-lg font-medium text-amber-600 dark:text-amber-500">Completed</div>
+                                    <div class="flex items-baseline justify-center w-full mt-5 text-secondary">
+                                        <div class="text-md font-medium truncate">Pending:</div>
+                                        <div class="ml-1.5 text-lg font-semibold">{{sumMonthlyPending}}</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Total Sales -->
+                            <div class="flex flex-col flex-auto p-6 bg-card shadow rounded-2xl overflow-hidden">
+                                <div class="flex items-start justify-between">
+                                    <div class="text-lg font-medium tracking-tight leading-6 truncate">Total Sales</div>
+                                </div>
+                                <div class="flex flex-col items-center mt-2">
+                                    <div class="text-7xl sm:text-8xl font-bold tracking-tight leading-none text-green-500">{{sumTotalCompleted}}</div>
+                                    <div class="text-lg font-medium text-green-600 dark:text-green-500">Completed</div>
+                                    <div class="flex items-baseline justify-center w-full mt-5 text-secondary">
+                                        <div class="text-md font-medium truncate">Pending:</div>
+                                        <div class="ml-1.5 text-lg font-semibold">{{sumTotalPending}}</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Sales summary -->
+                            <div class="sm:col-span-2 md:col-span-4 flex flex-col flex-auto p-6 bg-card shadow rounded-2xl overflow-hidden">
+                                <!-- Header -->
+                                <div class="flex flex-col sm:flex-row items-start justify-between">
+                                    <div class="text-lg font-medium tracking-tight leading-6 truncate">Sales Summary</div>
+                                    <div class="mt-3 sm:mt-0 sm:ml-2">
+                                        <mat-button-toggle-group
+                                            value="this-week"
+                                            #timeSelector="matButtonToggleGroup">
+                                            <mat-button-toggle value="last-week" (click)="weeklyGraph = false">Last Week</mat-button-toggle>
+                                            <mat-button-toggle value="this-week" (click)="weeklyGraph = true">This Week</mat-button-toggle>
+                                        </mat-button-toggle-group>
+                                    </div>
+                                </div>
+                                <div class="grid grid-cols-1 md:grid-cols-4 grid-flow-row gap-6 w-full mt-8 sm:mt-4">
+                                    <!-- New vs. Closed -->
+                                    <div class="flex flex-col flex-auto col-span-2 md:col-span-4 lg:col-span-2">
+                                        <div class="font-medium text-secondary">Weekly Graph</div>
+                                        <!-- <div *ngIf="!weeklyGraph" class="font-medium text-secondary">Monthly Graph</div> -->
+                                        <div class="flex flex-col flex-auto">
+                                            <apx-chart
+                                                class="flex-auto w-full h-80"
+                                                [chart]="salesChart.chart"
+                                                [colors]="salesChart.colors"
+                                                [dataLabels]="salesChart.dataLabels"
+                                                [grid]="salesChart.grid"
+                                                [labels]="salesChart.labels"
+                                                [legend]="salesChart.legend"
+                                                [plotOptions]="salesChart.plotOptions"
+                                                [series]="salesChart.series[timeSelector.value]"
+                                                [states]="salesChart.states"
+                                                [stroke]="salesChart.stroke"
+                                                [tooltip]="salesChart.tooltip"
+                                                [xaxis]="salesChart.xaxis"
+                                                [yaxis]="salesChart.yaxis"></apx-chart>
+                                        </div>
+                                    </div>
+                                    <!-- Overview -->
+                                    <div class="flex flex-col flex-auto col-span-2 lg:col-span-1">
+                                        <div class="font-medium text-secondary">Overview</div>
+                                        <div class="flex-auto grid grid-cols-2 gap-4 mt-6">
+                                            <!-- Completed -->
+                                            <div class="col-span-2 flex flex-col items-center justify-center py-8 px-1 rounded-2xl bg-blue-50 text-blue-500 dark:bg-white dark:bg-opacity-5 dark:text-blue-400">
+                                                <div *ngIf="weeklyGraph" class="text-5xl sm:text-7xl font-semibold leading-none tracking-tight">
+                                                    {{sumThisWeekCompleted}}
+                                                </div>
+                                                <div *ngIf="!weeklyGraph" class="text-5xl sm:text-7xl font-semibold leading-none tracking-tight">
+                                                    {{sumLastWeekCompleted}}
+                                                </div>
+                                                <div class="mt-1 text-sm sm:text-lg font-medium">Completed</div>
+                                            </div>
+                                            <!-- Pending -->
+                                            <div class="col-span-2 sm:col-span-1 flex flex-col items-center justify-center py-8 px-1 rounded-2xl bg-amber-50 text-amber-500 dark:bg-white dark:bg-opacity-5">
+                                                <div *ngIf="weeklyGraph" class="text-5xl font-semibold leading-none tracking-tight">
+                                                    {{sumThisWeekPending}}
+                                                </div>
+                                                <div *ngIf="!weeklyGraph" class="text-5xl font-semibold leading-none tracking-tight">
+                                                    {{sumLastWeekPending}}
+                                                </div>
+                                                <div class="mt-1 text-sm font-medium text-center">Pending</div>
+                                            </div>
+                                            <!-- Failed -->
+                                            <div class="col-span-2 sm:col-span-1 flex flex-col items-center justify-center py-8 px-1 rounded-2xl bg-red-50 text-red-500 dark:bg-white dark:bg-opacity-5">
+                                                <div *ngIf="weeklyGraph" class="text-5xl font-semibold leading-none tracking-tight">
+                                                    {{sumThisWeekFailed}}
+                                                </div>
+                                                <div *ngIf="!weeklyGraph" class="text-5xl font-semibold leading-none tracking-tight">
+                                                    {{sumLastWeekFailed}}
+                                                </div>
+                                                <div class="mt-1 text-sm font-medium text-center">Failed</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Top Product -->
+                                    <div class="flex flex-col flex-auto col-span-2 lg:col-span-1">
+                                        <div class="font-medium text-secondary">Top Product</div>
+                                        <div class="flex-auto grid grid-cols-2 gap-4 mt-6">
+                                            <!-- First -->
+                                            <div class="col-span-2 flex flex-col items-center justify-center py-8 px-1 rounded-2xl bg-blue-50 text-blue-500 dark:bg-white dark:bg-opacity-5 dark:text-blue-400">
+                                                <div *ngIf="weeklyGraph" class="text-sm sm:text-lg text-center font-semibold leading-none tracking-tight">
+                                                    {{firstThisWeek}}
+                                                </div>
+                                                <div *ngIf="!weeklyGraph" class="text-sm sm:text-lg text-center font-semibold leading-none tracking-tight">
+                                                    {{firstLastWeek}}
+                                                </div>
+                                                <div class="mt-1 text-sm sm:text-lg font-medium">1</div>
+                                            </div>
+                                            <!-- Second -->
+                                            <div class="col-span-2 sm:col-span-1 flex flex-col items-center justify-center py-8 px-1 rounded-2xl bg-amber-50 text-amber-500 dark:bg-white dark:bg-opacity-5">
+                                                <div *ngIf="weeklyGraph" class="text-sm text-center font-semibold leading-none tracking-tight">
+                                                    {{secondThisWeek}}
+                                                </div>
+                                                <div *ngIf="!weeklyGraph" class="text-sm text-center font-semibold leading-none tracking-tight">
+                                                    {{secondLastWeek}}
+                                                </div>
+                                                <div class="mt-1 text-sm font-medium text-center">2</div>
+                                            </div>
+                                            <!-- Third -->
+                                            <div class="col-span-2 sm:col-span-1 flex flex-col items-center justify-center py-8 px-1 rounded-2xl bg-red-50 text-red-500 dark:bg-white dark:bg-opacity-5">
+                                                <div *ngIf="weeklyGraph" class="text-sm text-center font-semibold leading-none tracking-tight">
+                                                    {{thirdThisWeek}}
+                                                </div>
+                                                <div *ngIf="!weeklyGraph" class="text-sm text-center font-semibold leading-none tracking-tight">
+                                                    {{thirdLastWeek}}
+                                                </div>
+                                                <div class="mt-1 text-sm font-medium text-center">3</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Summary Sales details -->
+                            <div class="sm:col-span-2 md:col-span-4 flex flex-col flex-auto p-6 pb-0 bg-card shadow rounded-2xl overflow-hidden">
+                                
+                                <div class="flex flex-wrap justify-between item-center w-full">
+                                    <div class="text-lg font-medium tracking-tight my-auto leading-6 truncate">Summary Sales Details</div>
+                                    <mat-form-field 
+                                        class="fuse-mat-no-subscript w-full sm:w-72"
+                                        appearance="fill">
+                                            <mat-date-range-input [rangePicker]="summarySalesDateRangePicker">
+                                                <input matStartDate [formControl]="summarySalesDateInputStartControl" placeholder="mm/dd/yyyy" >
+                                                <input matEndDate [formControl]="summarySalesDateInputEndControl" placeholder="mm/dd/yyyy">
+                                            </mat-date-range-input>
+                                            <mat-datepicker-toggle matSuffix [for]="summarySalesDateRangePicker"></mat-datepicker-toggle>
+                                            <mat-date-range-picker #summarySalesDateRangePicker></mat-date-range-picker>
+                                    
+                                        <!-- <mat-error *ngIf="range.controls.start.hasError('matStartDateInvalid')">Invalid start date</mat-error>
+                                        <mat-error *ngIf="range.controls.end.hasError('matEndDateInvalid')">Invalid end date</mat-error> -->
+                                    </mat-form-field>
+                                </div>
+                                <div class="flex flex-col flex-auto mt-2 overflow-x-auto">
+                                    <table
+                                        class="min-w-240 overflow-y-visible"
+                                        mat-table
+                                        [dataSource]="summarySalesRow">
+
+                                        <!-- Date -->
+                                        <ng-container matColumnDef="date">
+                                            <th
+                                                mat-header-cell
+                                                *matHeaderCellDef>
+                                                Date
+                                            </th>
+                                            <td
+                                                mat-cell
+                                                *matCellDef="let summarySale">
+                                                <span class="font-medium text-right">
+                                                    {{summarySale.date | date:'MMM dd, h:mm a'}}
+                                                </span>
+                                            </td>
+                                        </ng-container>
+
+                                        <!-- Customer Name -->
+                                        <ng-container matColumnDef="totalOrders">
+                                            <th
+                                                mat-header-cell
+                                                *matHeaderCellDef>
+                                                Total Orders
+                                            </th>
+                                            <td
+                                                mat-cell
+                                                *matCellDef="let summarySale">
+                                                {{summarySale.totalOrders}}
+                                            </td>
+                                        </ng-container>
+
+                                        <!-- Expenses percentage -->
+                                        <ng-container matColumnDef="amountEarned">
+                                            <th
+                                                mat-header-cell
+                                                *matHeaderCellDef>
+                                                Amount Earned
+                                            </th>
+                                            <td
+                                                mat-cell
+                                                *matCellDef="let summarySale">
+                                                {{summarySale.amountEarned | currency:currencySymbol}}
+                                            </td>
+                                        </ng-container>
+
+                                        <tr
+                                            mat-header-row
+                                            *matHeaderRowDef="summarySalesCol"></tr>
+                                        <tr
+                                            mat-row
+                                            *matRowDef="let row; columns: summarySalesCol;"></tr>
+                                    </table>
+                                </div>
+                                <mat-paginator
+                                    class=""
+                                    [ngClass]="{'pointer-events-none': isLoading}"
+                                    [length]="summarySalesPagination.length"
+                                    [pageIndex]="summarySalesPagination.page"
+                                    [pageSize]="summarySalesPagination.size"
+                                    [pageSizeOptions]="[5, 10, 25, 100]"
+                                    [showFirstLastButtons]="true"
+                                    #summarySalesPaginator></mat-paginator>
+                            </div>
+
+                            <!-- Daily Detailed Sales details -->
+                            <div class="sm:col-span-2 md:col-span-4 flex flex-col flex-auto p-6 pb-0 bg-card shadow rounded-2xl overflow-hidden">
+                                <div class="flex flex-wrap justify-between item-center w-full">
+                                    <div class="text-lg font-medium tracking-tight my-auto leading-6 truncate">Daily Detailed Sales Details</div>
+                                    <mat-form-field 
+                                        class="fuse-mat-no-subscript w-full sm:w-72"
+                                        appearance="fill"
+                                    >
+                                    <mat-date-range-input [rangePicker]="detailedDailySalesDateRangePicker">
+                                        <input matStartDate [formControl]="detailedDailySalesDateInputStart" placeholder="mm/dd/yyyy" >
+                                        <input matEndDate [formControl]="detailedDailySalesDateInputEnd" placeholder="mm/dd/yyyy">
+                                    </mat-date-range-input>
+                                    <mat-datepicker-toggle matSuffix [for]="detailedDailySalesDateRangePicker"></mat-datepicker-toggle>
+                                    <mat-date-range-picker #detailedDailySalesDateRangePicker></mat-date-range-picker>
+                                    
+                                        <!-- <mat-error *ngIf="range.controls.start.hasError('matStartDateInvalid')">Invalid start date</mat-error>
+                                        <mat-error *ngIf="range.controls.end.hasError('matEndDateInvalid')">Invalid end date</mat-error> -->
+                                    </mat-form-field>
+                                </div>
+                                <div class="flex flex-col flex-auto mt-2 overflow-x-auto">
+                                    <table
+                                        class="min-w-240 overflow-y-visible"
+                                        mat-table
+                                        [dataSource]="detailedDailySalesRow">
+
+                                        <!-- Date -->
+                                        <ng-container matColumnDef="date">
+                                            <th
+                                                mat-header-cell
+                                                *matHeaderCellDef>
+                                                Date
+                                            </th>
+                                            <td
+                                                mat-cell
+                                                *matCellDef="let detailedDailySale">
+                                                <span class="font-medium text-right">
+                                                    {{detailedDailySale.date | date:'MMM dd, h:mm a'}}
+                                                </span>
+                                            </td>
+                                        </ng-container>
+
+                                        <!-- Customer Name -->
+                                        <ng-container matColumnDef="customerName">
+                                            <th
+                                                mat-header-cell
+                                                *matHeaderCellDef>
+                                                Customer Name
+                                            </th>
+                                            <td
+                                                mat-cell
+                                                *matCellDef="let detailedDailySale">
+                                                {{detailedDailySale.customerName}}
+                                            </td>
+                                        </ng-container>
+
+                                        <!-- Subtotal -->
+                                        <ng-container matColumnDef="subTotal">
+                                            <th
+                                                mat-header-cell
+                                                *matHeaderCellDef>
+                                                Subtotal
+                                            </th>
+                                            <td
+                                                mat-cell
+                                                *matCellDef="let detailedDailySale">
+                                                {{detailedDailySale.subTotal | currency: currencySymbol}}
+                                            </td>
+                                        </ng-container>
+
+                                        <!-- Service Charge -->
+                                        <ng-container matColumnDef="serviceCharge">
+                                            <th
+                                                mat-header-cell
+                                                *matHeaderCellDef>
+                                                Service Charge
+                                            </th>
+                                            <td
+                                                mat-cell
+                                                *matCellDef="let detailedDailySale">
+                                                {{detailedDailySale.serviceCharge | currency:currencySymbol}}
+                                            </td>
+                                        </ng-container>
+
+                                        <!-- Delivery Charge -->
+                                        <ng-container matColumnDef="deliveryCharge">
+                                            <th
+                                                mat-header-cell
+                                                *matHeaderCellDef>
+                                                Delivery Charge
+                                            </th>
+                                            <td
+                                                mat-cell
+                                                *matCellDef="let detailedDailySale">
+                                                {{detailedDailySale.deliveryCharge | currency:currencySymbol}}
+                                            </td>
+                                        </ng-container>
+
+                                        <!-- Commission-->
+                                        <ng-container matColumnDef="commission">
+                                            <th
+                                                mat-header-cell
+                                                *matHeaderCellDef>
+                                                Commission
+                                            </th>
+                                            <td
+                                                mat-cell
+                                                *matCellDef="let detailedDailySale">
+                                                {{detailedDailySale.commission | currency:currencySymbol}}
+                                            </td>
+                                        </ng-container>
+
+                                        <!-- Total -->
+                                        <ng-container matColumnDef="total">
+                                            <th
+                                                mat-header-cell
+                                                *matHeaderCellDef>
+                                                Total
+                                            </th>
+                                            <td
+                                                mat-cell
+                                                *matCellDef="let detailedDailySale">
+                                                {{detailedDailySale.total | currency:currencySymbol}}
+                                            </td>
+                                        </ng-container>
+
+                                        <tr
+                                            mat-header-row
+                                            *matHeaderRowDef="detailedDailySalesCol"></tr>
+                                        <tr
+                                            mat-row
+                                            *matRowDef="let row; columns: detailedDailySalesCol;"></tr>
+                                    </table>
+                                </div>
+                                <mat-paginator
+                                    class=""
+                                    [ngClass]="{'pointer-events-none': isLoading}"
+                                    [length]="detailedDailySalesPagination.length"
+                                    [pageIndex]="detailedDailySalesPagination.page"
+                                    [pageSize]="detailedDailySalesPagination.size"
+                                    [pageSizeOptions]="[5, 10, 25, 100]"
+                                    [showFirstLastButtons]="true"
+                                    #detailedDailySalesPaginator></mat-paginator>
+                            </div>
+
+                            <!-- Daily Top Products details -->
+                            <div class="sm:col-span-2 md:col-span-4 flex flex-col flex-auto p-6 pb-0 bg-card shadow rounded-2xl overflow-hidden">
+                                <div class="flex flex-wrap justify-between item-center w-full">
+                                    <div class="text-lg font-medium tracking-tight my-auto leading-6 truncate">Daily Top Products Details</div>
+                                    <mat-form-field 
+                                        class="fuse-mat-no-subscript w-full sm:w-72"
+                                        appearance="fill"
+                                    >
+                                    <mat-date-range-input [rangePicker]="dailyTopProductsDateRangePicker">
+                                        <input matStartDate [formControl]="dailyTopProductsDateInputStart" placeholder="mm/dd/yyyy" >
+                                        <input matEndDate [formControl]="dailyTopProductsDateInputEnd" placeholder="mm/dd/yyyy">
+                                    </mat-date-range-input>
+                                    <mat-datepicker-toggle matSuffix [for]="dailyTopProductsDateRangePicker"></mat-datepicker-toggle>
+                                    <mat-date-range-picker #dailyTopProductsDateRangePicker></mat-date-range-picker>
+
+                                    
+                                        <!-- <mat-error *ngIf="range.controls.start.hasError('matStartDateInvalid')">Invalid start date</mat-error>
+                                        <mat-error *ngIf="range.controls.end.hasError('matEndDateInvalid')">Invalid end date</mat-error> -->
+                                    </mat-form-field>
+                                </div>
+                                <div class="flex flex-col flex-auto mt-2 overflow-x-auto">
+                                    <table
+                                        class="min-w-240 overflow-y-visible"
+                                        mat-table
+                                        [dataSource]="dailyTopProductsRow">
+
+                                        <!-- Date -->
+                                        <ng-container matColumnDef="date">
+                                            <th
+                                                mat-header-cell
+                                                *matHeaderCellDef>
+                                                Date
+                                            </th>
+                                            <td
+                                                mat-cell
+                                                *matCellDef="let dailyTopProduct">
+                                                <span class="font-medium text-right">
+                                                    {{dailyTopProduct.date | date:'MMM dd, h:mm a'}}
+                                                </span>
+                                            </td>
+                                        </ng-container>
+
+                                        <!-- Total -->
+                                        <ng-container matColumnDef="productName">
+                                            <th
+                                                mat-header-cell
+                                                *matHeaderCellDef>
+                                                Product Name
+                                            </th>
+                                            <td
+                                                mat-cell
+                                                *matCellDef="let dailyTopProduct">
+                                                <span class="font-medium text-right">
+                                                    {{dailyTopProduct.productName}}
+                                                </span>
+                                            </td>
+                                        </ng-container>
+
+                                        <!-- Expenses amount -->
+                                        <ng-container matColumnDef="rank">
+                                            <th
+                                                mat-header-cell
+                                                *matHeaderCellDef>
+                                                Rank
+                                            </th>
+                                            <td
+                                                mat-cell
+                                                *matCellDef="let dailyTopProduct">
+                                                {{dailyTopProduct.rank}}
+                                            </td>
+                                        </ng-container>
+
+                                        <!-- Expenses percentage -->
+                                        <ng-container matColumnDef="totalTransaction">
+                                            <th
+                                                mat-header-cell
+                                                *matHeaderCellDef>
+                                                Total Transaction
+                                            </th>
+                                            <td
+                                                mat-cell
+                                                *matCellDef="let dailyTopProduct">
+                                                {{dailyTopProduct.totalTransaction}}
+                                            </td>
+                                        </ng-container>
+
+                                        <tr
+                                            mat-header-row
+                                            *matHeaderRowDef="dailyTopProductsCol"></tr>
+                                        <tr
+                                            mat-row
+                                            *matRowDef="let row; columns: dailyTopProductsCol;"></tr>
+                                    </table>
+                                </div>
+                                <mat-paginator
+                                    class=""
+                                    [ngClass]="{'pointer-events-none': isLoading}"
+                                    [length]="dailyTopProductsPagination.length"
+                                    [pageIndex]="dailyTopProductsPagination.page"
+                                    [pageSize]="dailyTopProductsPagination.size"
+                                    [pageSizeOptions]="[5, 10, 25, 100]"
+                                    [showFirstLastButtons]="true"
+                                    #dailyTopProductsPaginator></mat-paginator>
+                            </div>
+
+                            <!-- Settlement -->
+                            <div class="sm:col-span-2 md:col-span-4 flex flex-col flex-auto p-6 pb-0 bg-card shadow rounded-2xl overflow-hidden">
+                                <div class="flex flex-wrap justify-between item-center w-full">
+                                    <div class="text-lg font-medium tracking-tight my-auto leading-6 truncate">Settlement</div>
+                                    <mat-form-field 
+                                        class="fuse-mat-no-subscript w-full sm:w-72"
+                                        appearance="fill"
+                                    >
+                                    <mat-date-range-input [rangePicker]="settlementDateRangePicker">
+                                        <input matStartDate [formControl]="settlementDateInputStart" placeholder="mm/dd/yyyy" >
+                                        <input matEndDate [formControl]="settlementDateInputEnd" placeholder="mm/dd/yyyy">
+                                    </mat-date-range-input>
+                                    <mat-datepicker-toggle matSuffix [for]="settlementDateRangePicker"></mat-datepicker-toggle>
+                                    <mat-date-range-picker #settlementDateRangePicker></mat-date-range-picker>
+
+                                    
+                                        <!-- <mat-error *ngIf="range.controls.start.hasError('matStartDateInvalid')">Invalid start date</mat-error>
+                                        <mat-error *ngIf="range.controls.end.hasError('matEndDateInvalid')">Invalid end date</mat-error> -->
+                                    </mat-form-field>
+                                </div>
+                                <div class="flex flex-col flex-auto mt-2 overflow-x-auto">
+                                    <table
+                                        class="min-w-240 overflow-y-visible"
+                                        mat-table
+                                        [dataSource]="settlementRow">
+
+                                        <!-- Payout Date -->
+                                        <ng-container matColumnDef="payoutDate">
+                                            <th
+                                                mat-header-cell
+                                                *matHeaderCellDef>
+                                                Payout Date
+                                            </th>
+                                            <td
+                                                mat-cell
+                                                *matCellDef="let settlement">
+                                                <span class="font-medium text-right">
+                                                    {{settlement.payoutDate | date:'MMM dd yyyy'}}
+                                                </span>
+                                            </td>
+                                        </ng-container>
+
+                                        <!-- Start Date -->
+                                        <ng-container matColumnDef="startDate">
+                                            <th
+                                                mat-header-cell
+                                                *matHeaderCellDef>
+                                                Start Date
+                                            </th>
+                                            <td
+                                                mat-cell
+                                                *matCellDef="let settlement">
+                                                <span class="font-medium text-right">
+                                                    {{settlement.startDate | date:'MMM dd yyyy'}}
+                                                </span>
+                                            </td>
+                                        </ng-container>
+
+                                        <!-- Cut-Off Date -->
+                                        <ng-container matColumnDef="cutoffDate">
+                                            <th
+                                                mat-header-cell
+                                                *matHeaderCellDef>
+                                                Cut-Off Date
+                                            </th>
+                                            <td
+                                                mat-cell
+                                                *matCellDef="let settlement">
+                                                <span class="font-medium text-right">
+                                                    {{settlement.cutoffDate | date:'MMM dd yyyy'}}
+                                                </span>
+                                            </td>
+                                        </ng-container>
+
+                                        <!-- Gross Amount -->
+                                        <ng-container matColumnDef="grossAmount">
+                                            <th
+                                                mat-header-cell
+                                                *matHeaderCellDef>
+                                                Gross Amount
+                                            </th>
+                                            <td
+                                                mat-cell
+                                                *matCellDef="let settlement">
+                                                {{settlement.grossAmount | currency: currencySymbol}}
+                                            </td>
+                                        </ng-container>
+
+                                        <!-- Service Charges -->
+                                        <ng-container matColumnDef="serviceCharges">
+                                            <th
+                                                mat-header-cell
+                                                *matHeaderCellDef>
+                                                Service Charges
+                                            </th>
+                                            <td
+                                                mat-cell
+                                                *matCellDef="let settlement">
+                                                {{settlement.serviceCharges | currency: currencySymbol}}
+                                            </td>
+                                        </ng-container>
+
+                                        <!-- Delivery Charges -->
+                                        <ng-container matColumnDef="selfDeliveryFee">
+                                            <th
+                                                mat-header-cell
+                                                *matHeaderCellDef>
+                                                Self Delivery Fee
+                                            </th>
+                                            <td
+                                                mat-cell
+                                                *matCellDef="let settlement">
+                                                {{settlement.selfDeliveryFee | currency: currencySymbol}}
+                                            </td>
+                                        </ng-container>
+
+                                        <!-- Commission -->
+                                        <ng-container matColumnDef="commission">
+                                            <th
+                                                mat-header-cell
+                                                *matHeaderCellDef>
+                                                Commission
+                                            </th>
+                                            <td
+                                                mat-cell
+                                                *matCellDef="let settlement">
+                                                {{settlement.commission | currency: currencySymbol}}
+                                            </td>
+                                        </ng-container>
+
+                                        <!-- Nett Amount -->
+                                        <ng-container matColumnDef="netAmount">
+                                            <th
+                                                mat-header-cell
+                                                *matHeaderCellDef>
+                                                Net Amount
+                                            </th>
+                                            <td
+                                                mat-cell
+                                                *matCellDef="let settlement">
+                                                {{settlement.netAmount | currency: currencySymbol}}
+                                            </td>
+                                        </ng-container>
+
+                                        <tr
+                                            mat-header-row
+                                            *matHeaderRowDef="settlementCol"></tr>
+                                        <tr
+                                            mat-row
+                                            *matRowDef="let row; columns: settlementCol;"></tr>
+                                    </table>
+                                </div>
+                                <mat-paginator
+                                    class=""
+                                    [ngClass]="{'pointer-events-none': isLoading}"
+                                    [length]="settlementPagination.length"
+                                    [pageIndex]="settlementPagination.page"
+                                    [pageSize]="settlementPagination.size"
+                                    [pageSizeOptions]="[5, 10, 25, 100]"
+                                    [showFirstLastButtons]="true"
+                                    #settlementPaginator></mat-paginator>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
